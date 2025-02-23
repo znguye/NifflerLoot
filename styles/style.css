@@ -1,0 +1,112 @@
+body{
+    padding: 0;
+    text-align: center;
+}
+
+#game-intro{
+    display: none;
+    padding: 20px;
+    background-image: url('images/Fake background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-instruction{
+    display: none;
+    padding: 20px;
+    background-image: url('images/Fake background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-container{
+    display: block;
+    padding: 20px;
+    background-image: url('images/Chessboard.jpg');
+    background-size: cover;
+    background-position: center;
+    align-content: center;
+    position: relative;
+}
+
+#game-end{
+    display: none;
+    padding: 20px;
+}
+
+#game-over-screen{
+    display: none;
+    padding: 20px;
+}
+
+#win-screen{
+    display: none;
+    padding: 20px;
+}
+
+#game-intro p {
+    font-size: 18px;
+    font-family: "Poppins";
+}
+
+.logo-img {
+    width: 300px;
+}
+
+body button{
+    font-size: 18px;
+    font-family: "Poppins";
+    background-color: darkblue;
+    color: white;
+    padding: 20px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#game-intro h1 {
+    font-size: 40px;
+    font-family: "Poppins";
+    color: darkblue;
+}
+
+
+#game-instruction h2{
+    font-size: 20px;
+    font-family: "Poppins";
+    color: darkblue;
+}
+
+.instruction-list{
+    font-size: 15px;
+    font-family: "Poppins";
+    color: rgb(56, 139, 227);
+}
+
+#progress { /* To edit later*/
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+#progressBar { /* To edit later*/
+    height: 20px;
+    background-color: #4c4faf;
+    width: 0%;
+    border-radius: 5px;
+}
+
+#game-end h2 {
+    font-size: 40px;
+    font-family: "Poppins";
+    color: darkblue;
+}
+
+#game-end h3 {
+    font-size: 20px;
+    font-family: "Poppins";
+    color: rgb(0, 81, 139);
+}

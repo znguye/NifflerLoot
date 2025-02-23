@@ -11,7 +11,7 @@
     <main>
         <!-- Screen 1: Game Intro -->
         <div id = "game-intro">
-            <img src="images/Niffler.png" alt="Niffler">
+            <img class="logo-img" src="images/Niffler.png" alt="Niffler">
             <br>
             <h1>Niffler’s Loot</h1>
             <p>You’ve got a Niffler—a furry little loot goblin with a nose for treasure and zero self-control. 
@@ -23,7 +23,7 @@
         <!-- Screen 3: Game Instruction -->
         <div id = "game-instruction">
             <h2>How to loot</h2>
-            <ul>
+            <ul class = "instruction-list">
                 <li>1. Use the arrows to move your Niffler.</li>
                 <li>2. You need to reach your target before time runs out.</li>
                 <li>3. Collect the coins, stones, and red pockets to increase your balance.</li>
@@ -35,15 +35,25 @@
         <!-- Screen 4: Game Screen -->
         <div id = "game-container">
             <div id = "game-header">
-                <h2 id = "balance">Balance: <span id = "balance-amount">0</span></h2>
-                <h2 id = "progress">Progress: <span id = "progress-amount">0</span></h2>
+                <div id ="balance">
+                    <div id = "balance-amount">"Balance :"
+                    <span id = "balance-amount">$0</span>
+                    </div>
+                </div>
+                <div id="progress">
+                    <div id="progress-bar"></div>
+                </div>
             </div>
             <div id = "game-board"></div>
             <div id = "game-footer">
-                <h2 id = "timer">Time: <span id = "time-amount">60</span></h2>
+                <div id = "timer">
+                    "Remaining Time: "
+                    <span id = "time-remaining">00:00</span>
+                </div>
             </div>
+        </div>
         <!-- Screen 5: End Screen -->
-        <div id = "end-screen">
+        <div id = "game-end">
             <div id = "game-over-screen">
                 <h2>Game Over</h2>
                 <h3>Your final balance is: <span id = "final-balance">0</span></h3>
