@@ -15,20 +15,56 @@
         <!-- Screen 1: Game Intro -->
         <div id = "game-intro">
             <img class = "title-img" src="./Images2/Game_Title.png" alt="Niffler Title">   
-            <img class="logo-img" src="./Images2/Standing_Niffler.png" alt="Niffler"> 
-            <button class="button" id = "how-to-loot">How to loot</button>
+            <img class="logo-img" src="./Images2/Standing_Niffler.png" alt="Niffler">
+            <div class="footer">
+                <button class="button" id = "how-to-loot">How to loot</button>
+            </div>      
         </div>
 
         <!-- Screen 3: Game Instruction -->
         <div id = "game-instruction">
-            <h2>How to loot</h2>
-            <ul class = "instruction-list">
-                <li>1. Use the arrows to move your Niffler.</li>
-                <li>2. You need to reach your target before time runs out.</li>
-                <li>3. Collect the coins, stones, and red pockets to increase your balance.</li>
-                <li>3. Avoid the cursed coins.</li>
-            </ul>
-            <button id = "start-game">Start looting</button>
+            <div id="instruction">
+                <div class="instruction-list">
+                    <h2>How to loot</h2>
+                </div>
+                
+                <div class="instruction-list">
+                    <h3>1. Use the arrow keys to move your Niffler.</h3>
+                    <img id = "arrow-keys" src="./Images2/Arrows.webp" alt="Arrow Keys">
+                </div>
+
+                <div class="instruction-list">
+                    <h3>2. You need to collect sufficient items before time runs out.</h3>
+                    <div id = "collection-list">
+                        <div class="collection-item">
+                            <img class="hoard-item"  src="./Images2/Coin.png" alt="Coin">
+                            <span>Coin: 1 point</span>
+                        </div>
+                        <div class="collection-item">
+                            <img class="hoard-item"  src="./Images2/Diamond.png" alt="Stone">
+                            <span>Stone: 5 points</span>
+                        </div>
+                        <div class="collection-item">
+                            <img class="hoard-item"  src="./Images2/Red_Pocket.png" alt="Red Pocket">
+                            <span>Red Pocket: Surprise</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="instruction-list">
+                    <h3>3. Avoid the cursed coins.</h3>
+                    <div class="collection-item">
+                        <img id = "cursed_coin" src="./Images2/Cursed_Coin.png" alt="Cursed Coin">
+                        <span>Cursed Coin: Niffler frozen for 3 seconds</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <button class="button" id = "start-game">Start looting</button>
+            </div>  
+        </div>
+            
+            
+            
         </div>
 
         <!-- Screen 4: Game Screen -->

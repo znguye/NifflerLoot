@@ -10,14 +10,6 @@ body{
     font-family: "Jura", sans-serif;
 }
 
-#game-instruction{
-    display: none;
-    padding: 20px;
-    background-image: url('images/Fake background.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
 #game-container{
     display: none;
     padding: 20px;
@@ -46,7 +38,7 @@ body{
 /* Styling for the Game intro screen */
 
 #game-intro{
-    display: block;
+    display: none;
     background-image: url('../Images2/Intro.webp');
     width: 99vw;
     height: 99vh;
@@ -57,16 +49,16 @@ body{
 }
 
 .title-img{
-    height: 40vw;
+    height: 60vh;
     width: auto;
     position: absolute;
-    bottom: 35%;
+    bottom: 50%;
     left: 50%;
     transform: translateX(-50%); /* aligned in the middle */
 }
 
 .logo-img {
-    height: 20vw;
+    height: 30vh;
     width: auto;
     position: absolute;
     bottom: 20%;
@@ -89,7 +81,7 @@ body{
     width: fit-content;
     position: absolute;
     left: 50%; 
-    bottom: 12%; 
+    bottom: 5%; 
     transform: translateX(-46%);
 }
 
@@ -100,38 +92,121 @@ body{
 
 /*-------------------*/
 
-
-#game-intro p {
-    font-size: 18px;
-    font-family: "Poppins";
+#game-instruction{
+    display: block;
+    background-image: url('../Images2/Instruction.webp');
+    width: 99vw;
+    height: 99vh;
+    background-size: cover; /* Ensures it fits the entire screen */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
-
-
-body button{
-    font-size: 18px;
-    font-family: "Poppins";
-    background-color: darkblue;
-    color: white;
-    padding: 20px 30px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 20px;
+#instruction{
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 90%;
+    height: 90%;
+    transform: translate(5%, 5%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
-
 
 #game-instruction h2{
-    font-size: 20px;
-    font-family: "Poppins";
-    color: darkblue;
+    font-size: 3rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    font-style: bold;
+    padding: 10px;
+    top: 5%;
+    transform: translateX(20%);
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3);
 }
 
-.instruction-list{
-    font-size: 15px;
-    font-family: "Poppins";
-    color: rgb(56, 139, 227);
+#game-instruction h3{
+    font-size: 1.5rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3)
 }
+
+#arrow-keys{
+    width: 5vw;
+    height: auto;
+    size-adjust: 20%;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+#game-instruction span{
+    font-size: 1rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3)
+}
+
+/* .instruction-list,  */
+
+.collection-item, #arrow-keys{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transform: translateX(5%);
+    background-color: rgba(20, 20, 80, 0.3);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.collection-item:hover, {
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+#collection-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.hoard-item{
+    width: 10vw;
+    height: auto;
+    size-adjust: 20%;
+    transform: translateX(8%);
+    left: 50%;
+    align-self: center;
+}
+
+#cursed_coin{
+    width: 10vw;
+    height: auto;
+    size-adjust: 20%;
+    transform: translateX(10%);
+    left: 50%;
+    align-self: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------*/
 
 #progress { /* To edit later*/
     width: 100%;
