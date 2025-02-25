@@ -4,41 +4,15 @@
 }
 
 body{
-    padding: 0;
+    padding: 5px;
     text-align: center;
-    padding: 20px;
     font-family: "Jura", sans-serif;
-}
-
-#game-container{
-    display: none;
-    padding: 20px;
-    background-image: url('images/Chessboard.jpg');
-    background-size: cover;
-    background-position: center;
-    align-content: center;
-    position: relative;
-}
-
-#game-end{
-    display: none;
-    padding: 20px;
-}
-
-#game-over-screen{
-    display: none;
-    padding: 20px;
-}
-
-#win-screen{
-    display: none;
-    padding: 20px;
 }
 
 /* Styling for the Game intro screen */
 
 #game-intro{
-    display: none;
+    display: block;
     background-image: url('../Images2/Intro.webp');
     width: 99vw;
     height: 99vh;
@@ -66,7 +40,7 @@ body{
     transform: translateX(-46%); /* aligned in the middle but the image is not super symetrical */
 }
 
-.button{
+.button, .play-again {
     background-color: rgba(20, 20, 80, 0.3);
     color: ivory;
     font-family: "Jura", sans-serif;
@@ -85,29 +59,31 @@ body{
     transform: translateX(-46%);
 }
 
-.button:hover{
+.button:hover, .play-again:hover {
     background-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
 }
 
-/*-------------------*/
+/* Styling for the Game instruction screen */
 
 #game-instruction{
-    display: block;
-    background-image: url('../Images2/Instruction.webp');
+    display: none;
+    background-image: url('../Images2/Instruction.jpg');
     width: 99vw;
     height: 99vh;
     background-size: cover; /* Ensures it fits the entire screen */
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #instruction{
     background-color: rgba(255, 255, 255, 0.3);
     width: 90%;
     height: 90%;
-    transform: translate(5%, 5%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,8 +97,7 @@ body{
     color: ivory;
     font-style: bold;
     padding: 10px;
-    top: 5%;
-    transform: translateX(20%);
+    /* transform: translateX(20%); */
     text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3);
 }
 
@@ -134,103 +109,221 @@ body{
 }
 
 #arrow-keys{
-    width: 5vw;
+    width: 6vw;
     height: auto;
-    size-adjust: 20%;
-    transform: translateX(-50%);
     left: 50%;
 }
 
 #game-instruction span{
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-family: "Jura", sans-serif;
     color: ivory;
     text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3)
 }
 
-/* .instruction-list,  */
 
-.collection-item, #arrow-keys{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    transform: translateX(5%);
-    background-color: rgba(20, 20, 80, 0.3);
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.collection-item:hover, {
-    background-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-}
-
-#collection-list{
+#collection-list, #avoid-list, #navigation-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
     align-items: center;
-    justify-content: space-around;
+    margin: 10px;
+}
+
+.collection-item, .avoid-item, .arrow-card{
+    display: flex;
+    width: 2wv;
+    height: 2.4wv;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
+    margin: 10px 60px 10px 60px;
+    background-color: rgba(20, 20, 80, 0.3);
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.hoard-item{
-    width: 10vw;
+.collection-item:hover, .avoid-item:hover, .arrow-card:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.hoard-item, #cursed_coin{
+    width: 8vw;
     height: auto;
     size-adjust: 20%;
-    transform: translateX(8%);
     left: 50%;
     align-self: center;
 }
 
-#cursed_coin{
-    width: 10vw;
-    height: auto;
-    size-adjust: 20%;
-    transform: translateX(10%);
-    left: 50%;
-    align-self: center;
-}
 
+/* Styling for game container screen*/
 
+#game-container{
+    width: 99vw;
+    height: 99vh;
+    background-image: url('../Images2/GameScreen1.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-
-
-
-
-
-
-
-
-
-/*-------------------*/
-
-#progress { /* To edit later*/
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    font-size: 1.25rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3);
+}
+
+
+#timer{
+    font-size: 1.25rem;
+    font-family: "Jura", sans-serif;
+    color: rgba(20, 20, 80);
+    text-shadow: ivory;
+}
+
+#game-board{
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#chessboard {
+    height: 80%;
+    width: 80%;
+    position: relative;
+    aspect-ratio: 1/1;
+    background-image: url('../Images2/Chessboard.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#niffler {
+    height: 11.11%;
+    position:relative;
+}
+
+#game-header, #game-board,#game-footer{
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+#progress {
+    width: 500px;
+    height: 20px; /* Ensure a height is set */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px; /* Matches the progress bar */
     margin-bottom: 5px;
 }
 
-#progressBar { /* To edit later*/
-    height: 20px;
-    background-color: #4c4faf;
-    width: 0%;
-    border-radius: 5px;
+#progressBar {
+    width: 500px;
+    background-color: rgba(20, 20, 80, 0.5);
+    width: 0%; /* Starts empty */
+    border-radius: 5px; /* Matches parent */
+    transition: width 0.3s ease-in-out; /* Optional smooth animation */
+}
+
+#time-progress {
+    width: 500px;
+    height: 20px; /* Ensure a height is set */
+    background-color: rgba(20, 20, 80, 0.5);rgba(255, 255, 255, 0.5);
+    border-radius: 5px; /* Matches the progress bar */
+    margin-bottom: 5px;
+}
+
+#time-progressBar {
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 0%; /* Starts empty */
+    border-radius: 5px; /* Matches parent */
+    transition: width 0.3s ease-in-out; /* Optional smooth animation */
+}
+
+/*-----------*/
+
+#game-end{
+    width: 99vw;
+    height: 99vh;
+    background-image: url('../Images2/End_screen.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: none;
+    flex-direction: center;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 1.25rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3);
+}
+
+#game-over-screen{
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 60%;
+    height: 60%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#win-screen{
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 60%;
+    height: 60%;
+    
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #game-end h2 {
     font-size: 40px;
-    font-family: "Poppins";
-    color: darkblue;
+    font-family: "Jura", sans-serif;
+    color: rgba(20, 20, 80, 0.9);
+    margin: 50px 10px 10px 10px;
 }
 
 #game-end h3 {
     font-size: 20px;
-    font-family: "Poppins";
-    color: rgb(0, 81, 139);
+    font-family: "Jura", sans-serif;
+    color: rgba(20, 20, 80, 0.9);
+    margin: 20px;
+}
+
+.logo-img2 {
+    height: 20vh;
+    width: auto;
+    position: absolute;
+    bottom: 35%;
 }

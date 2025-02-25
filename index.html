@@ -30,7 +30,11 @@
                 
                 <div class="instruction-list">
                     <h3>1. Use the arrow keys to move your Niffler.</h3>
-                    <img id = "arrow-keys" src="./Images2/Arrows.webp" alt="Arrow Keys">
+                    <div id="navigation-list">
+                        <div class="arrow-card">
+                            <img id = "arrow-keys" src="./Images2/Arrows.webp" alt="Arrow Keys">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="instruction-list">
@@ -38,23 +42,26 @@
                     <div id = "collection-list">
                         <div class="collection-item">
                             <img class="hoard-item"  src="./Images2/Coin.png" alt="Coin">
-                            <span>Coin: 1 point</span>
+                            <span>1 dollar</span>
                         </div>
                         <div class="collection-item">
                             <img class="hoard-item"  src="./Images2/Diamond.png" alt="Stone">
-                            <span>Stone: 5 points</span>
+                            <span>5 dollars</span>
                         </div>
                         <div class="collection-item">
                             <img class="hoard-item"  src="./Images2/Red_Pocket.png" alt="Red Pocket">
-                            <span>Red Pocket: Surprise</span>
+                            <span>Surprise</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="instruction-list">
                     <h3>3. Avoid the cursed coins.</h3>
-                    <div class="collection-item">
-                        <img id = "cursed_coin" src="./Images2/Cursed_Coin.png" alt="Cursed Coin">
-                        <span>Cursed Coin: Niffler frozen for 3 seconds</span>
+                    <div id = "avoid-list">
+                        <div class="avoid-item">
+                            <img id = "cursed_coin" src="./Images2/Cursed_Coin.png" alt="Cursed Coin">
+                            <span>Freeze for 3 seconds</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,27 +69,32 @@
                 <button class="button" id = "start-game">Start looting</button>
             </div>  
         </div>
-            
-            
-            
-        </div>
-
+        
         <!-- Screen 4: Game Screen -->
         <div id = "game-container">
             <div id = "game-header">
-                <div id ="balance">
-                    <div id = "balance-amount">"Balance :"
-                    <span id = "balance-amount">$0</span>
-                    </div>
-                </div>
                 <div id="progress">
                     <div id="progress-bar"></div>
                 </div>
+                <div id ="balance">
+                    <div id = "balance-amount">Balance :
+                    <span id = "balance-amount">0 points</span>
+                    </div>
+                </div>
             </div>
-            <div id = "game-board"></div>
+
+            <div id = "game-board">   
+                    <div id = "chessboard">
+                    <img id = "niffler" src ="Images2/Niffler.png" alt="niffler"> 
+                    </div> 
+            </div>
+
             <div id = "game-footer">
+                <div id="time-progress">
+                    <div id="time-progress-bar"></div>
+                </div>
                 <div id = "timer">
-                    "Remaining Time: "
+                    Remaining Time: 
                     <span id = "time-remaining">00:00</span>
                 </div>
             </div>
@@ -91,15 +103,16 @@
         <div id = "game-end">
             <div id = "game-over-screen">
                 <h2>Game Over</h2>
-                <h3>Your final balance is: <span id = "final-balance">0</span></h3>
+                <img class="logo-img2" src="./Images2/Standing_Niffler.png" alt="Niffler">
+                <h3>Your final balance is: <span id = "final-balance">$0</span></h3>  
             </div>
             <div id = "win-screen">
                 <h2>You did it! </h2>
-                <h3>You hoarded $XXX in time!</h3>
-                <h3>Your final balance is: <span id = "final-balance">0</span></h3>
+                <img class="logo-img2" src="./Images2/Standing_Niffler.png" alt="Niffler">
+                <h3>You looted $0 in time!</h3>               
             </div>
-            <div id = "play-again">
-                <button id = "play-again">Play again</button>
+            <div class = "game-end-footer">
+                <button class = "play-again" id = "play-again">Play again</button>
             </div>
         </div>
     </main>
