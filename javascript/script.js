@@ -6,11 +6,15 @@ const gameEnd = document.getElementById("game-end");
 const winScreen = document.getElementById("win-screen");
 const gameOverScreen = document.getElementById("game-over-screen");
 
-// Grabbing buttons
+// Grabbing buttons & elements
 const howToLoot = document.getElementById("how-to-loot");
 const startLooting = document.getElementById("start-game");
 const chessboard = document.getElementById("chessboard"); //fake for now
 const playAgain = document.getElementById("play-again");
+
+const finalBalanceAmount = document.getElementsByClassName("final-balance");
+const balanceAmount = document.getElementById("balance-amount");
+let startingAmount = 0;
 
 // Changing screens
 
@@ -19,41 +23,46 @@ howToLoot.addEventListener("click", () =>{
     gameInstruction.style.display = "flex";
 })
 
-startLooting.addEventListener("click", () =>{
+startLooting.addEventListener("click", () =>{ //add balance
     gameInstruction.style.display = "none";
     gameContainer.style.display = "flex";
     startTimer();
 })
 
-chessboard.addEventListener("click", () =>{
-    gameContainer.style.display = "none";
-    gameEnd.style.display = "flex";
-    winScreen.style.display = "flex";
-})
-
 playAgain.addEventListener("click", () =>{
-    gameIntro.style.display = "block";
     gameEnd.style.display = "none";
-    winScreen.style.display = "none";
+    gameContainer.style.display = "flex";
+    resetTimer();
+    resetBalance();
+    startTimer();
 })
 
+//Some functions to show different ending screens
 function showEndScreen(){
     gameContainer.style.display = "none";
     gameEnd.style.display = "flex";
-    winScreen.style.display = "flex";
+    clearInterval(timer);
 }
 
-function startTimer(){
-    timer = setInterval(updateTimer,1000); //run the updateTimer function every second
-}
-
-function showWinScreen(){
+function showWinScreen(){ //add balance
     winScreen.style.display = "flex";
     gameOverScreen.style.display = "none";
+    //Add a loop because finalBalanceAmount appears in 2 types of screens
+    for (let i=0; i<finalBalanceAmount.length; i++){
+        finalBalanceAmount[i].innerText = `${balanceAmount}`;
+    }
+    
+
 }
 
-function showGameOverScreen(){
+function showGameOverScreen(){ //add balance
     winScreen.style.display = "none";
     gameOverScreen.style.display = "flex";
+    for (let i=0; i<finalBalanceAmount.length; i++){
+        finalBalanceAmount[i].innerText = `${balanceAmount}`;
+    }
 }
 
+function resetBalance(){
+    balanceAmount.innertext = `${startingAmount}`;
+}

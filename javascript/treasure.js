@@ -74,7 +74,7 @@ const progressBar = document.getElementById('progress-bar');
 const balanceAmount = document.getElementById('balance-amount');
 
 let balance = 0;
-const lootTarget =100;
+const lootTarget =70;
 const totalBalance = lootTarget;
 
 
@@ -126,3 +126,4 @@ function updateLootProgress(){
         showGameOverScreen();
     }
 }
+

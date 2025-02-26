@@ -55,6 +55,12 @@ updatePlayerPosition();
 
 //----------------------------------------------------------------------------------------//
 
+function freeze(event){
+    switch (event.key){
+        default:
+            return;
+    }
+}
 
 
 
