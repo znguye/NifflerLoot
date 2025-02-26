@@ -1,3 +1,48 @@
+//TIME PROGRESS
+
+// Create the Time remaining bar
+const timeProgressBar = document.getElementById('time-progress-bar');
+const timeRemainingContainer = document.getElementById("time-remaining");
+
+let timeRemaining = 30;
+const totalTime = timeRemaining;
+let timer; //blank
+
+//Create a function to convert time into minutes and seconds
+function updateTimer(){
+    if (timeRemaining >0){
+        timeRemaining--;
+
+        const minutes = Math.floor(timeRemaining/60).toString().padStart(2,"0");
+        const seconds = (timeRemaining%60).toString().padStart(2,"0");
+        
+        timeRemainingContainer.innerText = `${minutes}:${seconds}`;
+
+        const timePercentage = timeRemaining/ totalTime *100;
+        timeProgressBar.style.width = `${timePercentage}%`
+    } else {
+        clearInterval(timer);
+        window.showEndScreen();
+    }
+}
+
+function startTimer(){
+    clearInterval(timer);
+    timer = setInterval(updateTimer,1000); //run the updateTimer function every second
+}
+
+function resetTimer(){
+    clearInterval(timer);
+    timeRemaining = totalTime;
+
+    const minutes = Math.floor(timeRemaining/60).toString().padStart(2,"0");
+    const seconds = (timeRemaining%60).toString().padStart(2,"0");
+
+    timeRemainingContainer.innerText = `${minutes}:${seconds}`;
+    timeProgressBar.style.width = "100%";
+}
+
+
 class GameObject { 
     constructor(type, gridSize, playerRow, playerCol){
         // //This class is active when the gameScreen is on
@@ -23,6 +68,14 @@ class GameObject {
             if(this.objectRow !== playerRow && this.objectCol !== playerCol){ //avoiding player's current position
                 objectPosition = true;
             }
+
+            for (let i=0; i <gameObjects.length; i++){
+                if(gameObjects[i].objectRow !== this.objectRow && gameObjects[i].objectCol !== this.objectCol){
+                    objectPosition = true;
+                    break;
+                }
+            }
+            
         } this.createGameObject();
     }
 
@@ -30,6 +83,8 @@ class GameObject {
     createGameObject(){
         this.element = document.createElement("div");
         this.element.classList.add("game-object", this.type);
+
+        const cellSize = getCellSize();
         this.element.style.transform = `translate(${this.objectCol*cellSize}px, ${this.objectRow*cellSize}px)`;
 
         document.getElementById("gridOverlay").appendChild(this.element);
@@ -45,7 +100,7 @@ class GameObject {
 
 
 //Generate random objects during an interval
-const maxObjects = 10;
+const maxObjects = 15;
 const objectTypes = ["coin", "diamond", "redPocket", "cursedCoin"];
 let gameObjects = [];
 
@@ -74,7 +129,7 @@ const progressBar = document.getElementById('progress-bar');
 const balanceAmount = document.getElementById('balance-amount');
 
 let balance = 0;
-const lootTarget =70;
+const lootTarget =60;
 const totalBalance = lootTarget;
 
 
@@ -90,11 +145,10 @@ function checkCollision(){
             balance = balance + lootValue;
             balanceAmount.innerText = `${balance}`;
             updateLootProgress();
-            clearTimeout(obj.timeoutID);
 
             setTimeout(() =>{
                 obj.element.remove();
-                gameObjects.splice(i,1);
+                gameObjects = gameObjects.filter(item => item !== obj);
             }, 200);
             break;
         }         
@@ -121,9 +175,8 @@ function updateLootProgress(){
     progressBar.style.width = `${progressPercentage}%`;
 
     if (balance >= lootTarget){
+        clearInterval(timer);
         showWinScreen();
-    } else {
-        showGameOverScreen();
     }
 }
 
