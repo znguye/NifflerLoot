@@ -77,16 +77,20 @@
                     <div id="progress-bar"></div>
                 </div>
                 <div id ="balance">
-                    <div id = "balance-amount">Balance :
-                    <span id = "balance-amount">0 points</span>
+                    <div id = "balance-amount">Looted :
+                    <span id = "balance-amount">$0</span>
                     </div>
                 </div>
             </div>
 
             <div id = "game-board">   
                     <div id = "chessboard">
-                    <img id = "niffler" src ="Images2/Niffler.png" alt="niffler"> 
-                    </div> 
+                        <div id="gridOverlay">
+                            <div id="player">
+                                <img id = "niffler" src ="Images2/Niffler.png" alt="niffler"> 
+                            </div>
+                        </div>
+                    </div>
             </div>
 
             <div id = "game-footer">
@@ -94,7 +98,7 @@
                     <div id="time-progress-bar"></div>
                 </div>
                 <div id = "timer">
-                    Remaining Time: 
+                    Remaining Time : 
                     <span id = "time-remaining">00:00</span>
                 </div>
             </div>
@@ -116,8 +120,9 @@
             </div>
         </div>
     </main>
-    <script type="text/javascript" src="javascript/coins.js"></script>
     <script type="text/javascript" src="javascript/player.js"></script>
+    <script type="text/javascript" src="javascript/treasure.js"></script>
+    <script type="text/javascript" src="javascript/setting.js"></script>
     <script type="text/javascript" src="javascript/game.js"></script>
     <script type="text/javascript" src="javascript/script.js"></script>
 </body>

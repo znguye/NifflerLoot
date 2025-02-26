@@ -1,37 +1,54 @@
-// Grabbing screens
-const gameIntro = document.getElementById("game-intro");
-const gameInstruction = document.getElementById("game-instruction");
-const gameContainer = document.getElementById("game-container");
-const gameEnd = document.getElementById("game-end");
-const winScreen = document.getElementById("win-screen");
-const gameOverScreen = document.getElementById("game-over-screen");
+// Game Container Setup
 
-// Grabbing buttons
-const howToLoot = document.getElementById("how-to-loot");
-const startLooting = document.getElementById("start-game");
-const chessboard = document.getElementById("chessboard"); //fake for now
-const playAgain = document.getElementById("play-again");
+//Get elements
+const player = document.getElementById("player");
+const grid = document.getElementById("gridOverlay");
 
-// Changing screens
+// Define grid size
+const gridSize = 9;
+const cellSize = grid.clientWidth/ gridSize;
 
-howToLoot.addEventListener("click", () =>{
-    gameIntro.style.display = "none";
-    gameInstruction.style.display = "flex";
-})
+//Define the initial position of the player
+function getRandomInt(min, max){
+    return Math.floor(Math.random() * (max-min+1)) + min;
+}
 
-startLooting.addEventListener("click", () =>{
-    gameInstruction.style.display = "none";
-    gameContainer.style.display = "flex";
-})
+let playerRow = getRandomInt(0,8);
+let playerCol = getRandomInt(0,8);
 
-chessboard.addEventListener("click", () =>{
-    gameContainer.style.display = "none";
-    gameEnd.style.display = "flex";
-    winScreen.style.display = "flex";
-})
 
-playAgain.addEventListener("click", () =>{
-    gameIntro.style.display = "block";
-    gameEnd.style.display = "none";
-    winScreen.style.display = "none";
-})
+//Create a function to update the position
+function updatePlayerPosition(){
+    const positionX = playerCol * cellSize;
+    const positionY = playerRow * cellSize;
+
+    player.style.transform = `translate(${positionX}px, ${positionY}px)`;
+    window.checkCollision();
+}
+
+//Create a function to move the player with key press
+function movePlayer(event){
+    switch (event.key){
+        case "ArrowUp":
+            if (playerRow >0){ playerRow --}; //make sure player doesn't go out of the edge
+            break;
+        case "ArrowDown":
+            if (playerRow < gridSize -1) {playerRow++};
+            break;
+        case "ArrowLeft":
+            if (playerCol >0) {playerCol --};
+            break;
+        case "ArrowRight":
+            if (playerCol < gridSize -1) {playerCol ++};
+            break;
+        default:
+            return; // Ignore other keys
+    }
+    updatePlayerPosition()
+}
+
+//Make sure the document listens for key presses
+document.addEventListener("keydown", movePlayer);
+
+//Generate the initial random position
+updatePlayerPosition();
