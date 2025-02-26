@@ -1,6 +1,4 @@
-window.gameObjects = [];
-class GameObject {
-    
+class GameObject { 
     constructor(type, gridSize, playerRow, playerCol){
         // //This class is active when the gameScreen is on
         // this.gameScreen = gameScreen;
@@ -47,8 +45,9 @@ class GameObject {
 
 
 //Generate random objects during an interval
-const maxObjects = 7;
+const maxObjects = 10;
 const objectTypes = ["coin", "diamond", "redPocket", "cursedCoin"];
+let gameObjects = [];
 
 function generateGameObjects(playerRow, playerCol){
     
@@ -64,3 +63,66 @@ function generateGameObjects(playerRow, playerCol){
 setInterval(() => {
     generateGameObjects(playerRow, playerCol);
 }, Math.floor(Math.random()*2000+1000))
+
+//----------------------------------------------------------------------------------------//
+
+
+//LOOT PROGRESS
+
+//Create a Balance bar
+const progressBar = document.getElementById('progress-bar');
+const balanceAmount = document.getElementById('balance-amount');
+
+let balance = 0;
+const lootTarget =100;
+const totalBalance = lootTarget;
+
+
+
+//Flag for overlapping between the Player's vs the Object's position:
+
+function checkCollision(){
+    for (let i=0; i<gameObjects.length; i++) {
+        let obj = gameObjects[i];
+        
+        if(playerRow === obj.objectRow && playerCol === obj.objectCol){
+            let lootValue = getLootValue(obj.type); 
+            balance = balance + lootValue;
+            balanceAmount.innerText = `${balance}`;
+            updateLootProgress();
+            clearTimeout(obj.timeoutID);
+
+            setTimeout(() =>{
+                obj.element.remove();
+                gameObjects.splice(i,1);
+            }, 200);
+            break;
+        }         
+    }   
+}
+
+function getLootValue(type){
+    switch(type){
+        case "coin":
+            return 1;
+        case "diamond":
+            return 5;
+        case "redPocket":
+            return Math.floor(Math.random()*10);
+        case "cursedCoin":
+            return 0;
+        default:
+            return 0;
+    }
+}
+
+function updateLootProgress(){
+    const progressPercentage = (balance/totalBalance)*100;
+    progressBar.style.width = `${progressPercentage}%`;
+
+    if (balance >= lootTarget){
+        showWinScreen();
+    } else {
+        showGameOverScreen();
+    }
+}

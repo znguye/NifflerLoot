@@ -23,7 +23,6 @@ function updatePlayerPosition(){
     const positionY = playerRow * cellSize;
 
     player.style.transform = `translate(${positionX}px, ${positionY}px)`;
-    window.checkCollision();
 }
 
 //Create a function to move the player with key press
@@ -45,6 +44,7 @@ function movePlayer(event){
             return; // Ignore other keys
     }
     updatePlayerPosition()
+    checkCollision();
 }
 
 //Make sure the document listens for key presses
@@ -52,3 +52,10 @@ document.addEventListener("keydown", movePlayer);
 
 //Generate the initial random position
 updatePlayerPosition();
+
+//----------------------------------------------------------------------------------------//
+
+
+
+
+
