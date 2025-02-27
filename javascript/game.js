@@ -1,3 +1,5 @@
+const gridSize = 9;
+
 // Grabbing screens
 const gameIntro = document.getElementById("game-intro");
 const gameInstruction = document.getElementById("game-instruction");
@@ -20,8 +22,8 @@ let finalBalanceAmount = document.getElementsByClassName("final-balance");
 const player = document.getElementById("player");
 const grid = document.getElementById("gridOverlay");
 
-// Define grid size
-const gridSize = 9;
+// Define cell size
+
 function getCellSize(){
     return grid.clientWidth/ gridSize;
 }
@@ -120,6 +122,8 @@ function showWinScreen(){
     for (let i=0; i<finalBalanceAmount.length; i++){
         finalBalanceAmount[i].innerText = `${balanceAmount.innerText}`;
     }
+    //Money rain
+    // startMoneyRain();
 }
 
 function showGameOverScreen(){ 
@@ -137,3 +141,10 @@ function resetBalance(){
     balanceAmount.innertext = `${balance}`;
     progressBar.style.width = "0%";
 }
+
+//Freeze function
+// function freeze(event){
+//     return;
+// }
+
+//Money rain function

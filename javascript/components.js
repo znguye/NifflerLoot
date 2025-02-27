@@ -1,10 +1,16 @@
+
+const lootTarget = 100000;
+let timeRemaining = 30;
+const maxObjects = 20;
+let maxTime = 2000; // time an object remains
+
 //TIME PROGRESS
 
 // Create the Time remaining bar
 const timeProgressBar = document.getElementById('time-progress-bar');
 const timeRemainingContainer = document.getElementById("time-remaining");
 
-let timeRemaining = 30;
+
 const totalTime = timeRemaining;
 let timer; //blank
 
@@ -90,7 +96,6 @@ class GameObject {
         document.getElementById("gridOverlay").appendChild(this.element);
 
         //Set the duration of object's appearance
-        let maxTime = 5000;
         setTimeout(() => {
             this.element.remove();
             gameObjects = gameObjects.filter(obj => obj !== this); 
@@ -100,7 +105,6 @@ class GameObject {
 
 
 //Generate random objects during an interval
-const maxObjects = 15;
 const objectTypes = ["coin", "diamond", "redPocket", "cursedCoin"];
 let gameObjects = [];
 
@@ -109,15 +113,14 @@ function generateGameObjects(playerRow, playerCol){
     if (gameObjects.length <= maxObjects){
         let type = objectTypes[Math.floor(Math.random() * objectTypes.length)]
         let newObject = new GameObject(type, 9, playerRow, playerCol);
-
-        return gameObjects.push(newObject);
+        gameObjects.push(newObject);
     }
 }
 
 //Set frequency of how often objects are generated
 setInterval(() => {
     generateGameObjects(playerRow, playerCol);
-}, Math.floor(Math.random()*2000+1000))
+}, Math.floor(Math.random()*2000 + 500))
 
 //----------------------------------------------------------------------------------------//
 
@@ -129,7 +132,6 @@ const progressBar = document.getElementById('progress-bar');
 const balanceAmount = document.getElementById('balance-amount');
 
 let balance = 0;
-const lootTarget =60;
 const totalBalance = lootTarget;
 
 
@@ -158,13 +160,13 @@ function checkCollision(){
 function getLootValue(type){
     switch(type){
         case "coin":
-            return 1;
+            return 1000;
         case "diamond":
-            return 5;
+            return 5000;
         case "redPocket":
-            return Math.floor(Math.random()*10);
+            return Math.round(Math.random())*10000;
         case "cursedCoin":
-            return 0;
+            return -3000;
         default:
             return 0;
     }
@@ -179,4 +181,5 @@ function updateLootProgress(){
         showWinScreen();
     }
 }
+
 

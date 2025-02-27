@@ -42,11 +42,11 @@
                     <div id = "collection-list">
                         <div class="collection-item">
                             <img class="hoard-item"  src="./Images2/Coin.png" alt="Coin">
-                            <span>1 dollar</span>
+                            <span>1000 dollar</span>
                         </div>
                         <div class="collection-item">
                             <img class="hoard-item"  src="./Images2/Diamond.png" alt="Stone">
-                            <span>5 dollars</span>
+                            <span>5000 dollars</span>
                         </div>
                         <div class="collection-item">
                             <img class="hoard-item"  src="./Images2/Red_Pocket.png" alt="Red Pocket">
@@ -60,7 +60,7 @@
                     <div id = "avoid-list">
                         <div class="avoid-item">
                             <img id = "cursed_coin" src="./Images2/Cursed_Coin.png" alt="Cursed Coin">
-                            <span>Freeze for 3 seconds</span>
+                            <span>Freeze (-3000$ for now)</span>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,22 @@
                 <button class="button" id = "start-game">Start looting</button>
             </div>  
         </div>
-        
+
+        <!-- Screen 2.1: Challenge Screen -->
+        <!-- <div class="challenge-screen">
+            <div class = "title">
+                <h2>Your loot mission</h2>
+            </div>
+            <div class="challenge-content">
+                <div id="target-challenge">
+                    <span id = "target-amount">$100,000</span>
+                </div>
+                <div id="time-challenge">
+                    <span id = "time-remaining">00:00</span>
+                </div>
+            </div>
+        </div> -->
+
         <!-- Screen 4: Game Screen -->
         <div id = "game-container">
             <div id = "game-header">
@@ -99,7 +114,7 @@
                 </div>
                 <div id = "timer">
                     Remaining Time : 
-                    <span id = "time-remaining">00:00</span>
+                    <span id = "time-remaining">00:00</span> <!-- Screen 5: change id into class -->
                 </div>
             </div>
         </div>
@@ -107,11 +122,13 @@
         <div id = "game-end">
             <div id = "game-over-screen">
                 <h2>Game Over</h2>
+                <h3>You did not meet your target... Your Niffler is now reconsidering its career choices 🤔💼</h3>
                 <img class="logo-img2" src="./Images2/Standing_Niffler.png" alt="Niffler">
                 <h3>Your final balance is: $<span class = "final-balance">0</span></h3>  
             </div>
             <div id = "win-screen">
                 <h2>You did it! </h2>
+                <h3>Congratulations! Your Niffler is now legally required to pay taxes 💰📜</h3>
                 <img class="logo-img2" src="./Images2/Standing_Niffler.png" alt="Niffler">
                 <h3>You looted $<span class = "final-balance">0</span> in time!</h3>               
             </div>

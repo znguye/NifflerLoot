@@ -309,39 +309,39 @@ body{
 
 #game-over-screen{
     background-color: rgba(255, 255, 255, 0.3);
-    width: 60%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
 
     display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
 }
 
 #win-screen{
     background-color: rgba(255, 255, 255, 0.3);
-    width: 60%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
     
     display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
 }
 
 #game-end h2 {
-    font-size: 40px;
+    font-size: 60px;
     font-family: "Jura", sans-serif;
     color: rgba(20, 20, 80, 0.9);
     margin: 50px 10px 10px 10px;
 }
 
 #game-end h3 {
-    font-size: 20px;
+    font-size: 30px;
     font-family: "Jura", sans-serif;
     color: rgba(20, 20, 80, 0.9);
     margin: 20px;
