@@ -8,12 +8,12 @@ You’ve got a Niffler—a furry little loot goblin with a nose for treasure and
 
 ## MVP
 ### Themes
-- Character: Niffler (Fantastic beasts and where to find them)
-- UI: inspired by Monument Valley
+- Character: Niffler, inspired by the movie Fantastic beasts and where to find them
+- UI: dreamy and minimalistic, inspired by Monument Valley
 ### Win lose logic
 - Goal: Loot enough money within a certain time limit 
 - Win: Bank account updated; in the future your Niffler can go to the next round
-- Lose: Bank account updated; you can play again
+- Lose: Bank account updated; you can play again and your bank account is reset to 0
 ### Basic functionalities
 - Niffler’s moves: The player uses arrows to move their Niffler
 - Game objects: coins, stones, red pockets and cursed coins are generated at random, without overlapping with the position of the Niffler
