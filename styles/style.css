@@ -68,7 +68,7 @@ body{
 
 #game-instruction{
     display: none;
-    background-image: url('../Images2/Instruction.jpg');
+    background-image: url('../Images2/Instruction.png');
     width: 99vw;
     height: 99vh;
     background-size: cover; /* Ensures it fits the entire screen */
