@@ -1,4 +1,3 @@
-
 const lootTarget = 100000;
 let timeRemaining = 60;
 const maxObjects = 20; // Max number of objects generated at atime
