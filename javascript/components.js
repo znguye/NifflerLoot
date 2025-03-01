@@ -1,8 +1,8 @@
 
 const lootTarget = 100000;
-let timeRemaining = 30;
-const maxObjects = 20;
-let maxTime = 2000; // time an object remains
+let timeRemaining = 60;
+const maxObjects = 20; // Max number of objects generated at atime
+let maxTime = 2500; // time an object remains
 
 //TIME PROGRESS
 
