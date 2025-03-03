@@ -1,150 +1,171 @@
-const gridSize = 9;
+// SET UP
+const gridSize = 9; // to change this if ChatGPT can generate a different chessboard
 
-// Grabbing screens
-const gameIntro = document.getElementById("game-intro");
-const gameInstruction = document.getElementById("game-instruction");
-const gameContainer = document.getElementById("game-container");
-const gameEnd = document.getElementById("game-end");
-const winScreen = document.getElementById("win-screen");
-const gameOverScreen = document.getElementById("game-over-screen");
+const screens = {
+    gameIntro: document.getElementById("game-intro"),
+    gameInstruction: document.getElementById("game-instruction"),
+    gameChallenge: document.getElementById("game-challenge"),
+    gameContainer: document.getElementById("game-container"),
+    gameEnd: document.getElementById("game-end"),
+    winScreen: document.getElementById("win-screen"),
+    gameOverScreen: document.getElementById("game-over-screen"),
+}
 
-// Grabbing buttons & balance
-const howToLoot = document.getElementById("how-to-loot");
-const startLooting = document.getElementById("start-game");
-const chessboard = document.getElementById("chessboard"); //fake for now
-const playAgain = document.getElementById("play-again");
+const buttons = {
+    howToLoot: document.getElementById("how-to-loot"),
+    startLooting: document.getElementById("start-game"),
+    play: document.getElementById("play-button"),
+    playAgain: [document.getElementById("play-again1"), document.getElementById("play-again2")],
+    nextLevel: document.getElementById("next-level"),
+}
 
-let finalBalanceAmount = document.getElementsByClassName("final-balance");
+let playerRow;
+let playerCol;
 
-// Game Container Setup
 
-//Get elements
+// CHANGING SCREENS
+buttons.howToLoot.addEventListener("click", () => switchScreen(screens.gameIntro, screens.gameInstruction, "flex"));
+buttons.startLooting.addEventListener("click", () => switchScreen(screens.gameInstruction, screens.gameChallenge, "flex"));
+
+buttons.play.addEventListener("click", () => {
+    console.log("play button clicked");
+    switchScreen(screens.gameChallenge, screens.gameContainer, "flex");
+    playFunction();
+    resetPlayerPosition();
+    startGameObjectsGeneration();    
+    document.addEventListener("keydown", movePlayer); //Make sure the document listens for key presses
+    updatePlayerPosition(); // drop the Niffler in the grid
+});
+
+buttons.nextLevel.addEventListener("click", () =>{
+    console.log("next level button clicked");
+    switchScreen(screens.gameEnd, screens.gameChallenge, "flex");
+    currentLevel++;
+    loadLevel(currentLevel);
+})
+
+buttons.playAgain.forEach(playAgainButton => playAgainButton.addEventListener("click", () => restartGame()));
+
+
+// SOME FUNCTIONS TO BE RUN WHEN CHANGING SCREENS
+function switchScreen(fromScreen, toScreen, displayType){
+    fromScreen.style.display = "none";
+    toScreen.style.display = displayType; 
+}
+
+function playFunction(){
+    resetTimer();
+    resetBalance();
+    startTimer();
+}
+
+//Set frequency of how often objects are generated
+function startGameObjectsGeneration(){
+        setInterval(() => {
+            generateGameObjects();
+        }, Math.floor(Math.random()*2000 + 500))
+}
+
+function restartGame(){
+    console.log("restartGame function called");
+    switchScreen(screens.gameEnd, screens.gameContainer, "flex");
+    playFunction();
+    document.addEventListener("keydown", movePlayer);
+    resetPlayerPosition();
+    updatePlayerPosition();
+    startGameObjectsGeneration();
+}
+
+
+//END SCREEN(S)
+function showEndScreen(){
+    switchScreen(screens.gameContainer, screens.gameEnd, "flex");
+
+    if(balance >= lootTarget){
+        showWinScreen();
+    } else {
+        showGameOverScreen();
+    }
+}
+// Win screen and Game over screen are on the other JS file where the balance will be calculated
+
+// GAME CONTAINER SETUP (WHERE THE NIFFLER WILL BE LOCATED)
 const player = document.getElementById("player");
 const grid = document.getElementById("gridOverlay");
-
-// Define cell size
 
 function getCellSize(){
     return grid.clientWidth/ gridSize;
 }
 
-//Define the initial position of the player
-function getRandomInt(min, max){
-    return Math.floor(Math.random() * (max-min+1)) + min;
-}
-
-let playerRow = getRandomInt(0,8);
-let playerCol = getRandomInt(0,8);
-
-
-//Create a function to update the position
-
+//Define the initial position of the player (3 steps)
+//Step 3: Map the player's position in the grid
 function updatePlayerPosition(){
-    const cellSize = getCellSize();
+    const cellSize = getCellSize(); // returns the size of each grid cell
     const positionX = playerCol * cellSize;
     const positionY = playerRow * cellSize;
 
     player.style.transform = `translate(${positionX}px, ${positionY}px)`;
 }
 
-//Create a function to move the player with key press
+//Step 2: Update the position with the generated numbers
+function resetPlayerPosition(){
+    playerRow = getRandomInt(0,8); // number should be between 0 and 8 so the niffler doesn't go outside of the grid
+    playerCol = getRandomInt(0,8);
+    updatePlayerPosition();
+}
+
+//Step 1: Generate a number for each of the x, y axis
+function getRandomInt(min, max){
+    return Math.floor(Math.random() * (max-min+1)) + min;
+}
+
+
+// MOVE THE NIFFLER
+// Create a function to move the player with key press
 function movePlayer(event){
     switch (event.key){
-        case "ArrowUp":
-            if (playerRow >0){ playerRow --}; //make sure player doesn't go out of the edge
+        case "ArrowUp": if (playerRow >0){ playerRow --}; 
             break;
-        case "ArrowDown":
-            if (playerRow < gridSize -1) {playerRow++};
+        case "ArrowDown": if (playerRow < gridSize -1) {playerRow++};
             break;
-        case "ArrowLeft":
-            if (playerCol >0) {playerCol --};
+        case "ArrowLeft": if (playerCol >0) {playerCol --};
             break;
-        case "ArrowRight":
-            if (playerCol < gridSize -1) {playerCol ++};
+        case "ArrowRight": if (playerCol < gridSize -1) {playerCol ++};
             break;
-        default:
-            return; // Ignore other keys
+        default: return; // Returns nothing when other keys are pressed
     }
     updatePlayerPosition()
     checkCollision();
 }
 
 
-
-// Changing screens
-
-howToLoot.addEventListener("click", () =>{
-    gameIntro.style.display = "none";
-    gameInstruction.style.display = "flex";
-})
-
-startLooting.addEventListener("click", () =>{ //add balance
-    gameInstruction.style.display = "none";
-    gameContainer.style.display = "flex";
-    startTimer();
-    //Make sure the document listens for key presses
-    document.addEventListener("keydown", movePlayer);
-    //Generate the initial random position
-    updatePlayerPosition();
-})
-
-playAgain.addEventListener("click", () =>{
-    gameEnd.style.display = "none";
-    gameContainer.style.display = "flex";
-    resetTimer();
-    resetBalance();
-    startTimer();
-
-    //Make sure the document listens for key presses
-    document.addEventListener("keydown", movePlayer);
-
-    //Generate the initial random position
-    updatePlayerPosition();
-})
-
-//Some functions to show different ending screens
-function showEndScreen(){
-    gameContainer.style.display = "none";
-
-    if(balance>= lootTarget){
-        showWinScreen();
-    } else {
-        showGameOverScreen();
+//CURSED COIN LEVEL 2
+function arrowsReversed(event){
+    switch (event.key){
+        case "ArrowDown": if (playerRow >0){ playerRow --}; 
+            break;
+        case "ArrowUp": if (playerRow < gridSize -1) {playerRow++};
+            break;
+        case "ArrowRight": if (playerCol >0) {playerCol --};
+            break;
+        case "ArrowLeft": if (playerCol < gridSize -1) {playerCol ++};
+            break;
+        default: return; 
     }
+    updatePlayerPosition()
+    checkCollision();
 }
 
-function showWinScreen(){ 
-    gameContainer.style.display = "none";
-    gameEnd.style.display = "flex";
-    winScreen.style.display = "flex";
-    gameOverScreen.style.display = "none";
-    //Add a loop because finalBalanceAmount appears in 2 types of screens
-    for (let i=0; i<finalBalanceAmount.length; i++){
-        finalBalanceAmount[i].innerText = `${balanceAmount.innerText}`;
-    }
-    //Money rain
-    // startMoneyRain();
+function cursedArrowsReversed(){
+    console.log("arrows reversed for 5 secs");
+    document.removeEventListener("keydown", movePlayer);
+    document.addEventListener("keydown", arrowsReversed);
+
+    setTimeout(() => {
+        console.log("time out!");
+        document.removeEventListener("keydown", arrowsReversed);
+        document.addEventListener("keydown", movePlayer);
+    },5000);
 }
 
-function showGameOverScreen(){ 
-    gameContainer.style.display = "none";
-    gameEnd.style.display = "flex";
-    winScreen.style.display = "none";
-    gameOverScreen.style.display = "flex";
-    for (let i=0; i<finalBalanceAmount.length; i++){
-        finalBalanceAmount[i].innerText = `${balanceAmount.innerText}`;
-    }
-}
 
-function resetBalance(){
-    balance = 0;
-    balanceAmount.innertext = `${balance}`;
-    progressBar.style.width = "0%";
-}
-
-//Freeze function
-// function freeze(event){
-//     return;
-// }
-
-//Money rain function

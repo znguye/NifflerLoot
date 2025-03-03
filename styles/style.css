@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    /* height: 850px;
+    width: auto; */
 }
 
 body{
@@ -12,7 +14,7 @@ body{
 /* Styling for the Game intro screen */
 
 #game-intro{
-    display: block;
+    display: block; /*to change to block*/
     background-image: url('../Images2/Intro.webp');
     width: 99vw;
     height: 99vh;
@@ -40,7 +42,18 @@ body{
     transform: translateX(-46%); /* aligned in the middle but the image is not super symetrical */
 }
 
-.button, .play-again {
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
+    transform: translateX(-46%);
+}
+
+.button {
     background-color: rgba(20, 20, 80, 0.3);
     color: ivory;
     font-family: "Jura", sans-serif;
@@ -51,12 +64,9 @@ body{
     letter-spacing: 3px;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin: 40px auto;
+    margin: 0; /* margin != auto for flexbox to work */
     width: fit-content;
-    position: absolute;
-    left: 50%; 
-    bottom: 5%; 
-    transform: translateX(-46%);
+    position: static;
 }
 
 .button:hover, .play-again:hover {
@@ -80,7 +90,7 @@ body{
     align-items: center;
 }
 
-#instruction{
+.transparent_container, #instruction{
     background-color: rgba(255, 255, 255, 0.3);
     width: 90%;
     height: 90%;
@@ -377,15 +387,103 @@ body{
 }
 
 .redPocket{
-    background: url("../Images2/red_pocket.png");
+    background: url("../Images2/RedPocket.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .cursedCoin{
-    background: url("../Images2/Cursed_coin.png");
+    background: url("../Images2/CursedCoin.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
+
+/*---Target screen-----*/
+
+#game-challenge{
+    display: none; /*to change to flex*/
+    background-image: url('../Images2/Gamescreen3.webp');
+    width: 99vw;
+    height: 99vh;
+    background-size: cover; /* Ensures it fits the entire screen */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.challenge-content{
+    display: flex; /*to change to flex*/
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+}
+
+#target-container{
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 90%;
+    height: 90%;
+    display: flex; /*to change to flex*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#challenge-title h2{
+    font-size: 3rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    font-style: bold;
+    padding: 10px;
+    /* transform: translateX(20%); */
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3);
+}
+
+.challenge-content h3{
+    font-size: 1.5rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3)
+}
+
+.challenge-content span{
+    font-size: 1.25rem;
+    font-family: "Jura", sans-serif;
+    color: ivory;
+    text-shadow: 2px 2px 5px rgba(20, 20, 80, 0.3)
+}
+
+.challenge-item{
+    display: flex;
+    width: 2wv;
+    height: 2.4wv;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    margin: 10px 60px 10px 60px;
+    background-color: rgba(20, 20, 80, 0.3);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.challenge-item:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+#target-image, #time-image, #cursed-coin-2{
+    width: 50%;
+    height: auto;
+    size-adjust: 20%;
+    left: 50%;
+    align-self: center;
+}
+
