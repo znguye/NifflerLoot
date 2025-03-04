@@ -1,6 +1,7 @@
 // SET UP
 const gridSize = 9; // to change this if ChatGPT can generate a different chessboard
 
+
 const screens = {
     gameIntro: document.getElementById("game-intro"),
     gameInstruction: document.getElementById("game-instruction"),
@@ -31,6 +32,7 @@ buttons.play.addEventListener("click", () => {
     console.log("play button clicked");
     switchScreen(screens.gameChallenge, screens.gameContainer, "flex");
     playFunction();
+    playMusic();
     resetPlayerPosition();
     startGameObjectsGeneration();    
     document.addEventListener("keydown", movePlayer); //Make sure the document listens for key presses
@@ -70,6 +72,7 @@ function restartGame(){
     console.log("restartGame function called");
     switchScreen(screens.gameEnd, screens.gameContainer, "flex");
     playFunction();
+    playMusic();
     document.addEventListener("keydown", movePlayer);
     resetPlayerPosition();
     updatePlayerPosition();

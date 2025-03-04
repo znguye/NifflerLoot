@@ -1,10 +1,16 @@
 // LEVEL SETUP
 let currentLevel = 1;
+let musicLevel = null;
+
+const music = {
+    funnyFootstep: document.getElementById("funny-footstep-music"),
+    sillyChase: document.getElementById("silly-chase-music"),
+}
 
 const levels = {
-    1: {name: "Mission 1", lootTarget: 50000, time: 60, maxTime: 3500, maxObjects:10, cursedEffect: "balanceDeduction", cursedText: "-$3000"},
-    2: {name: "Mission 2", lootTarget: 100000, time: 90, maxTime: 2500, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows"},
-    3: {name: "Mission 3", lootTarget: 150000, time: 90, maxTime: 2000, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows"},
+    1: {name: "Mission 1", lootTarget: 50000, time: 60, maxTime: 3500, maxObjects:10, cursedEffect: "balanceDeduction", cursedText: "-$3000", music: music.funnyFootstep},
+    2: {name: "Mission 2", lootTarget: 100000, time: 90, maxTime: 2500, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows", music: music.sillyChase},
+    3: {name: "Mission 3", lootTarget: 150000, time: 90, maxTime: 2000, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows", music: music.sillyChase},
 };
 
 // Grab content
@@ -22,6 +28,37 @@ const elements = {
 // Initialise everything to avoid errors
 let timeRemaining, timer, lootTarget, maxObjects, maxTime, cursedEffect, totalTime;
 let balance = 0;
+
+
+//ADDING MUSIC
+function setLevelMusic(level){
+    if (levels[level] && levels[level].music){
+        musicLevel = levels[level].music;
+    }
+}
+
+function startMusic(){
+    if (musicLevel){
+        console.log("music started");
+        musicLevel.play();
+    } else {console.log("musicLevel issue", musicLevel)}
+}
+
+function stopMusic(){
+    console.log("any music stopped");
+    Object.values(music).forEach(song =>{
+        if (song && !song.pause()){
+            song.pause();
+            song.currentTime =0;
+        }
+    })
+}
+
+function playMusic(){
+    setLevelMusic(currentLevel);
+    stopMusic();
+    startMusic();
+}
 
 
 // WIN/ GAME OVER SCREENS (DEPENDENT ON THE LOOT BALANCE)

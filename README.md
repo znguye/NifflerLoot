@@ -33,6 +33,8 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 
 ### Third iteration
 - [ ] Change ending message to "You looted X amount in N time"
+- [x] Add music
+- [ ] Delete all console log to make it clean
 - [ ] Generate different random ending messages for both levels
 - [ ] Fix screen size to avoid scrolling
 - [ ] Make sure the different components do not overflow & overlap
