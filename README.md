@@ -26,33 +26,32 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 
 ## Iterations
 ### Second iteration
-- [x] Design the next levels
-- [x] Develop the set up to add more levels quickly
-- [x] Make sure the screens change smoothly
-- [x] Make sure the balance and timer resets during each round
+- [x] Add 2 more levels with different settings
 - [x] Upgrade the cursed coin function for the next level
+- [x] Refactor code to make it easier to add levels
 
 ### Third iteration
 - [x] Add music
-- [x] Fix screen size to avoid scrolling 
-- [x] Make sure the different components do not overflow & overlap with `overflow: hidden`
+- [x] Fix screen size to avoid scrolling & make sure components don't overflow
 - [x] Generate different random ending messages for both levels
-- [x] Tripple check that the time and the balance reset each time especially when clicking "play again"
 
 ## Backlog
-- [ ] Next level: a new banana is now part of the gameObject
-- [ ] Betting function for points multiplier
-- [ ] Saving the highest score of a certain round
-- [ ] Money rain during win screen
-- [ ] Next level: If the Niffler gets stuck in the cursed coin 5 times, the game is over + random teleport
-- [ ] Modify the Challenge screen so you can click on a map to go back a level
-- [ ] Use sub-classes (e.g.: to add a banana)
+- [ ] Next level: A new game object - banana, which will make your Niffler slide *#designheavy*
+- [ ] Next level: If the Niffler gets stuck in any cursed coin 5 times, the game is over
+- [ ] Next level: Cursed coin means random telepot 
+- [ ] Betting function for points multiplier *#designheavy*
+- [ ] Saving the fastest loot during each round *#designheavy*
+- [ ] Modify the Challenge screen so you can click on a map to go back a level *#designheavy*
 - [ ] Fix bugs: Sometimes points don't add because the Niffler moves at the same time as the object being generated
-- [ ] Maybe: make sure there are fewer cursed_coins than the other objects
-- [ ] Maybe: how do I continue the game even after the target has been reached?
 
 ## Data structure
-List of classes and methods (TBD); format = toggle list
+<details>
+    <summary>Collision functions</summary>
+    #### Objective 1: 
+    ``` Test code ```
+    #### Objective 2:
+    ``` Test code ```
+</details>
 
 ## States y States Transitions
 - **Start Screen**: contains the game's name, the main logo, and the next button
@@ -68,9 +67,9 @@ List of classes and methods (TBD); format = toggle list
 - [x] **Step 5**: Game objects' classes & methods; Collision without points; Countdown functions; Loot balance functions; collision with points
 - [x] **Step 6**: Drafted documentation excluding data structure
 - [x] **Step 7**: Drafted presentation; Game logic, HTML basic structure, CSS basic structure of Level 2
-- [x] **Step 8**: Second iteration of the game screen
+- [x] **Step 8**: Second iteration of the game screen; Code refactor
 - [x] **Step 9**: Third iteration; add music 
-- [ ] **Step 10**: Data structure documentation; Code refactor
+- [ ] **Step 10**: Data structure documentation; 
 - [ ] **Step 11**: review documentation & create the presentation slide
 
 ## Links
