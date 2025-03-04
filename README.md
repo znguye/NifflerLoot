@@ -46,11 +46,13 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 
 ## Data structure
 <details>
-    <summary>Collision functions</summary>
-    #### Objective 1: 
-    ``` Test code ```
-    #### Objective 2:
-    ``` Test code ```
+    <summary> Game object generations</summary>
+
+#### Objective 1:
+``` Test code ```
+#### Objective 2:
+``` Test code ```
+
 </details>
 
 ## States y States Transitions
