@@ -24,7 +24,8 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 - **Time**: The game is over after the time runs out; the game is won as soon as the target is met
 - **Screen size**: The game is not suitable for small touch screens (ipad, mobile)
 
-## Second iteration
+## Iterations
+### Second iteration
 - [x] Design the next levels
 - [x] Develop the set up to add more levels quickly
 - [x] Make sure the screens change smoothly
@@ -39,10 +40,11 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 - [x] Tripple check that the time and the balance reset each time especially when clicking "play again"
 
 ## Backlog
+- [ ] Next level: a new banana is now part of the gameObject
 - [ ] Betting function for points multiplier
 - [ ] Saving the highest score of a certain round
 - [ ] Money rain during win screen
-- [ ] Level 3: If the Niffler gets stuck in the cursed coin 5 times, the game is over + random teleport
+- [ ] Next level: If the Niffler gets stuck in the cursed coin 5 times, the game is over + random teleport
 - [ ] Modify the Challenge screen so you can click on a map to go back a level
 - [ ] Use sub-classes (e.g.: to add a banana)
 - [ ] Fix bugs: Sometimes points don't add because the Niffler moves at the same time as the object being generated
