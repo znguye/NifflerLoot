@@ -79,7 +79,7 @@
 
                 <div class="challenge-content">
                     <div class="challenge-item">
-                        <h3>Loot target</h3>
+                        <h3>Total loot target</h3>
                         <br>
                         <img id="target-image" src = "./Images2/Money.png" alt ="money">
                         <br>
@@ -144,18 +144,18 @@
         <div id = "game-end">
             <div id = "game-over-screen">
                 <h2>Game Over</h2>
-                <h3>You did not meet your target... Your Niffler is now reconsidering its career choices 🤔💼</h3>
+                <h3 id = "lose-message">You did not meet your target... Your Niffler is now reconsidering its career choices 🤔💼</h3>
                 <img class="logo-img2" src="./Images2/Standing_Niffler.png" alt="Niffler">
-                <h3>Your final balance is: $<span class = "final-balance">0</span></h3>  
+                <h3>You only looted $<span class = "final-balance">0</span></h3>  
                 <div class = "footer">
                     <button class = "button" id = "play-again1">Play again</button>
                 </div>
             </div>
             <div id = "win-screen">
                 <h2>You did it! </h2>
-                <h3>Congratulations! Your Niffler is now legally required to pay taxes 💰📜</h3>
+                <h3 id = "win-message">Congratulations! Your Niffler is now legally required to pay taxes 💰📜</h3>
                 <img class="logo-img2" src="./Images2/Standing_Niffler.png" alt="Niffler">
-                <h3>You looted $<span class = "final-balance">0</span> in time!</h3>
+                <h3>You looted $<span class = "final-balance">0</span> within the time limit!</h3>
                 <div class = "footer">
                     <button class = "button" id = "play-again2">Play again</button>
                     <button class = "button" id = "next-level">Next level</button>

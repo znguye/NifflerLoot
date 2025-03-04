@@ -39,13 +39,13 @@ function setLevelMusic(level){
 
 function startMusic(){
     if (musicLevel){
-        console.log("music started");
+        // console.log("music started");
         musicLevel.play();
-    } else {console.log("musicLevel issue", musicLevel)}
+    }// else {console.log("musicLevel issue", musicLevel)}
 }
 
 function stopMusic(){
-    console.log("any music stopped");
+    // console.log("any music stopped");
     Object.values(music).forEach(song =>{
         if (song && !song.pause()){
             song.pause();
@@ -65,9 +65,9 @@ function playMusic(){
 const finalBalanceAmount = document.getElementsByClassName("final-balance"); //amount when game ends, appears in 2 screens
 
 function showWinScreen(){ 
-    console.log("showWinScreen")
+    // console.log("showWinScreen")
     switchScreen(screens.gameOverScreen, screens.winScreen, "flex");
-    console.log("cur", currentLevel, "ref", levels)
+    // console.log("cur", currentLevel, "ref", levels)
     if (levels[currentLevel+1] == undefined){
         document.getElementById("next-level").style.display = "none";
     }
@@ -82,13 +82,13 @@ function showGameOverScreen(){
     switchScreen(screens.winScreen, screens.gameOverScreen, "flex");
     for (let i=0; i<finalBalanceAmount.length; i++){
         finalBalanceAmount[i].innerText = `${elements.balanceAmount.innerText}`;
-    }
+    };
 }
 
 
 // LEVEL SET UP
 function loadLevel(level){
-    console.log("loadLevel called");
+    // console.log("loadLevel called");
 
     //Update UI
     elements.missionTitle.innerText = levels[level].name;
@@ -123,7 +123,7 @@ function formatTime(time){
 
 //Reset the timer to the original time remaining value
 function resetTimer(){
-    console.log("resetTimer loaded");
+    // console.log("resetTimer loaded");
     clearInterval(timer);
     timeRemaining = totalTime;
     elements.timeRemainingContainer.innerText = formatTime(timeRemaining);
@@ -132,7 +132,7 @@ function resetTimer(){
 
 //Start the timer at game screen
 function startTimer(){
-    console.log("startTimer called");
+    // console.log("startTimer called");
     clearInterval(timer);
     loadLevel(currentLevel);
     timer = setInterval(updateTimer,1000); //run the updateTimer every second
@@ -140,7 +140,7 @@ function startTimer(){
 
 //Update the time remaining every second
 function updateTimer(){
-    console.log("updateTimer called");
+    // console.log("updateTimer called");
     if (timeRemaining > 0){
         timeRemaining--;
 
@@ -158,14 +158,14 @@ function updateTimer(){
 //LOOT BALANCE FUNCTIONS
 
 function resetBalance(){
-    console.log("resetBalance called");
+    // console.log("resetBalance called");
     balance = 0;
     elements.balanceAmount.innerText = "0";
     elements.progressBar.style.width = "0%";
 }
 
 function updateLootProgress(){
-    console.log("lootProgress updated");
+    // console.log("lootProgress updated");
     elements.balanceAmount.innerText = balance;
     const progressPercentage = (balance/lootTarget)*100;
     elements.progressBar.style.width = `${progressPercentage}%`;

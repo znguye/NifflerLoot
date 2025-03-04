@@ -32,28 +32,20 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 - [x] Upgrade the cursed coin function for the next level
 
 ### Third iteration
-- [ ] Change ending message to "You looted X amount in N time"
 - [x] Add music
-- [ ] Delete all console log to make it clean
-- [ ] Generate different random ending messages for both levels
-- [ ] Fix screen size to avoid scrolling
-- [ ] Make sure the different components do not overflow & overlap
-- [ ] Perfect the game's UI for different screen sizes
-- [ ] Tripple check that the time and the balance reset each time especially when clicking "play again"
-- [ ] Use sub-classes
-- [ ] Check bugs:
-    - [ ] Sometimes points don't add because the Niffler moves at the same time as the object being generated
-    - [ ] First object always overlaps at 0,0
+- [x] Fix screen size to avoid scrolling 
+- [x] Make sure the different components do not overflow & overlap with `overflow: hidden`
+- [x] Generate different random ending messages for both levels
+- [x] Tripple check that the time and the balance reset each time especially when clicking "play again"
 
 ## Backlog
-- Betting function for points multiplier
-- Highest scorer
-- Saving the highest score of a certain round
-- Animation of Niffler
-- Money rain during win screen
-- Sound effect for each type of coin
-- Level 3: If the Niffler gets stuck in the cursed coin 5 times, the game is over + random teleport
-- Modify the Target screen so you can click on a map to go back a level
+- [ ] Betting function for points multiplier
+- [ ] Saving the highest score of a certain round
+- [ ] Money rain during win screen
+- [ ] Level 3: If the Niffler gets stuck in the cursed coin 5 times, the game is over + random teleport
+- [ ] Modify the Challenge screen so you can click on a map to go back a level
+- [ ] Use sub-classes (e.g.: to add a banana)
+- [ ] Fix bugs: Sometimes points don't add because the Niffler moves at the same time as the object being generated
 - [ ] Maybe: make sure there are fewer cursed_coins than the other objects
 - [ ] Maybe: how do I continue the game even after the target has been reached?
 
@@ -74,8 +66,8 @@ List of classes and methods (TBD); format = toggle list
 - [x] **Step 5**: Game objects' classes & methods; Collision without points; Countdown functions; Loot balance functions; collision with points
 - [x] **Step 6**: Drafted documentation excluding data structure
 - [x] **Step 7**: Drafted presentation; Game logic, HTML basic structure, CSS basic structure of Level 2
-- [ ] **Step 8**: Second iteration of the game screen
-- [ ] **Step 9**: Third iteration; add music (Well done - instrument, by ZICO)
+- [x] **Step 8**: Second iteration of the game screen
+- [x] **Step 9**: Third iteration; add music 
 - [ ] **Step 10**: Data structure documentation; Code refactor
 - [ ] **Step 11**: review documentation & create the presentation slide
 

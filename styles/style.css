@@ -1,8 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    /* height: 850px;
-    width: auto; */
 }
 
 body{
@@ -22,6 +20,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    overflow: hidden; /*prevent scrolling */
 }
 
 .title-img{
@@ -88,6 +87,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /*prevent scrolling */
 }
 
 .transparent_container, #instruction{
@@ -183,7 +183,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; /*prevent scrolling */
     font-size: 1.25rem;
     font-family: "Jura", sans-serif;
     color: ivory;
@@ -414,6 +414,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /*prevent scrolling */
 }
 
 .challenge-content{

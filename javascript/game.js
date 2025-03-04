@@ -29,7 +29,7 @@ buttons.howToLoot.addEventListener("click", () => switchScreen(screens.gameIntro
 buttons.startLooting.addEventListener("click", () => switchScreen(screens.gameInstruction, screens.gameChallenge, "flex"));
 
 buttons.play.addEventListener("click", () => {
-    console.log("play button clicked");
+    // console.log("play button clicked");
     switchScreen(screens.gameChallenge, screens.gameContainer, "flex");
     playFunction();
     playMusic();
@@ -40,7 +40,7 @@ buttons.play.addEventListener("click", () => {
 });
 
 buttons.nextLevel.addEventListener("click", () =>{
-    console.log("next level button clicked");
+    // console.log("next level button clicked");
     switchScreen(screens.gameEnd, screens.gameChallenge, "flex");
     currentLevel++;
     loadLevel(currentLevel);
@@ -69,7 +69,7 @@ function startGameObjectsGeneration(){
 }
 
 function restartGame(){
-    console.log("restartGame function called");
+    // console.log("restartGame function called");
     switchScreen(screens.gameEnd, screens.gameContainer, "flex");
     playFunction();
     playMusic();
@@ -88,7 +88,8 @@ function showEndScreen(){
         showWinScreen();
     } else {
         showGameOverScreen();
-    }
+    };
+    generateMessage();
 }
 // Win screen and Game over screen are on the other JS file where the balance will be calculated
 
@@ -160,15 +161,42 @@ function arrowsReversed(event){
 }
 
 function cursedArrowsReversed(){
-    console.log("arrows reversed for 5 secs");
+    // console.log("arrows reversed for 5 secs");
     document.removeEventListener("keydown", movePlayer);
     document.addEventListener("keydown", arrowsReversed);
 
     setTimeout(() => {
-        console.log("time out!");
+        // console.log("time out!");
         document.removeEventListener("keydown", arrowsReversed);
         document.addEventListener("keydown", movePlayer);
     },5000);
 }
 
+// GENERATE ENDING MESSAGES
+const winMessages = [
+    {message: "Wow, look at you! Single-handedly ruining the economy."},
+    {message: "Congratulations! Your Niffler is now legally required to pay taxes!"},
+    {message: "Incredible! Your Niffler now has generational wealth—too bad it has no heirs."},
+    {message: "Great job! Your Niffler is now on Forbes’ ‘Top 10 Most Wanted’ list."},
+    {message: "You did it! Your Niffler is now too rich to function."}
+]
 
+const loseMessages =[
+    {message: "You did not meet your target... Your Niffler is now reconsidering its career choices!"},
+    {message: "Your Niffler tried… but financial freedom remains a dream."},
+    {message: "Nice try! Your Niffler is now offering to work for exposure."},
+    {message: "Sad! Your Niffler is now writing an apology letter to its wallet."},
+    {message: "Oh no! Your Niffler’s retirement plan now consists of hope and prayers."}
+]
+
+function generateMessage(){
+    console.log("generate end screen message")
+    if (screens.winScreen.style.display === "flex"){
+        let winMessage = winMessages[Math.floor(Math.random()*winMessages.length)].message;
+        document.getElementById("win-message").innerText = winMessage;
+    } else if (screens.gameOverScreen.style.display === "flex"){
+        let loseMessage = loseMessages[Math.floor(Math.random()*loseMessages.length)].message;
+        document.getElementById("lose-message").innerText =loseMessage;
+    }
+}
+    
