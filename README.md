@@ -43,17 +43,28 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 - [ ] Saving the fastest loot during each round *#designheavy*
 - [ ] Modify the Challenge screen so you can click on a map to go back a level *#designheavy*
 - [ ] Fix bugs: Sometimes points don't add because the Niffler moves at the same time as the object being generated
+- [ ] Add shortcuts to stop the music + instruction when hovering your mouse on the music icon
 
-## Data structure
-<details>
-    <summary> Game object generations</summary>
+## Useful tips
+### Creating a change screen function
+We can recycle this function for all screen changes
+```javascript
+function switchScreen(fromScreen, toScreen, displayType){
+    fromScreen.style.display = "none";
+    toScreen.style.display = displayType; 
+}
+```
 
-#### Objective 1:
-``` Test code ```
-#### Objective 2:
-``` Test code ```
+### Creating an event listener to switch screen
+```javascript
+buttons.nextLevel.addEventListener("click", () =>{
+    switchScreen(screens.gameEnd, screens.gameChallenge, "flex");
+    currentLevel++;
+    loadLevel(currentLevel);
+}) 
+```
 
-</details>
+
 
 ## States y States Transitions
 - **Start Screen**: contains the game's name, the main logo, and the next button
@@ -66,7 +77,7 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 - [x] **Step 2**: CSS & HTML iteration for each screen (first 4 screens of Level 1); screen switch functions;
 - [x] **Step 3**: Generate all UI components with ChatGPT, DALL-E and Adobe Express; CSS iteration
 - [x] **Step 4**: Game screen; Player's classes & methods
-- [x] **Step 5**: Game objects' classes & methods; Collision without points; Countdown functions; Loot balance functions; collision with points
+- [x] **Step 5**: Game object classes & methods; Collision without points; Countdown functions; Loot balance functions; collision with points
 - [x] **Step 6**: Drafted documentation excluding data structure
 - [x] **Step 7**: Drafted presentation; Game logic, HTML basic structure, CSS basic structure of Level 2
 - [x] **Step 8**: Second iteration of the game screen; Code refactor

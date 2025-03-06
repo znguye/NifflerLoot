@@ -8,9 +8,9 @@ const music = {
 }
 
 const levels = {
-    1: {name: "Mission 1", lootTarget: 50000, time: 60, maxTime: 3500, maxObjects:10, cursedEffect: "balanceDeduction", cursedText: "-$3000", music: music.funnyFootstep},
-    2: {name: "Mission 2", lootTarget: 100000, time: 90, maxTime: 2500, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows", music: music.sillyChase},
-    3: {name: "Mission 3", lootTarget: 150000, time: 90, maxTime: 2000, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows", music: music.sillyChase},
+    1: {name: "Mission 1", lootTarget: 20000, time: 30, maxTime: 3500, maxObjects:10, cursedEffect: "balanceDeduction", cursedText: "-$3000", music: music.funnyFootstep},
+    2: {name: "Mission 2", lootTarget: 50000, time: 60, maxTime: 2500, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows", music: music.sillyChase},
+    3: {name: "Mission 3", lootTarget: 100000, time: 90, maxTime: 2000, maxObjects:20, cursedEffect: "reverseControls", cursedText: "reversed arrows", music: music.sillyChase},
 };
 
 // Grab content
