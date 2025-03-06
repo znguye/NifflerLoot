@@ -45,26 +45,114 @@ You’ve got a Niffler - a furry little loot goblin with a nose for treasure and
 - [ ] Fix bugs: Sometimes points don't add because the Niffler moves at the same time as the object being generated
 - [ ] Add shortcuts to stop the music + instruction when hovering your mouse on the music icon
 
-## Useful tips
-### Creating a change screen function
-We can recycle this function for all screen changes
+## Class explanation & anything related to the game objects
+After the third iteration, the game contains one class - `GameObject`
+<br>
+First, create an empty array to store the game objects after they are created. This is needed to make sure there are not too many objects being generated at the same time. Later on, we will define the maximum number of objects that can be generated at the same time.
+
 ```javascript
-function switchScreen(fromScreen, toScreen, displayType){
-    fromScreen.style.display = "none";
-    toScreen.style.display = displayType; 
+let gameObjects = [];
+```
+<br>
+Create another array to store the game object types. This makes it easier to add different objects later on, and to associate each object with a different collision effect.
+
+```javascript
+const objectTypes = ["coin", "diamond", "redPocket", "cursedCoin"]; 
+```
+
+<br>
+Create a class called `GameObject` that includes a constructor and some functions. The constructor only needs the object type as a parameter because all objects are treated equally. 
+<br>
+Inside the constructor, include also the initial position of the object (0,0) just to initialise it and we'll change the position later on. We should also include the gridSize which is a global variable, a placeholder for each object, and a method to be called to initialise the object's position. 
+
+```javascript
+class GameObject { 
+    constructor(type){
+        this.type = type;
+        this.row = 0;
+        this.col = 0;
+        this.gridSize = gridSize; 
+        this.element = null;
+        this.objectPosition();
+    }
+
+    objectPosition(){};
+    createGameObject(); 
+    // We will elaborate on this later on
+}
+```
+<br>
+With the `objectPosition` function, first, we need to make sure that (1) the object is generated at random, (2) the object is generated into the grid div, and (3) the object fits into the grid cell.
+<br>
+We also need to make sure that the object does not overlap with the current position of the niffler. 
+<br>
+As we are generating many objects at the same time, it is more useful to create a loop to validate the generated object's position with the niffler's position. 
+<br> 
+Lastly, we need to call the `createGameObject` function so that there are objects to be evaluated in this function.
+
+```javascript
+objectPosition(){
+        let validPosition = false;
+
+        while(!validPosition) {
+            this.objectRow = Math.floor(Math.random() * gridSize);
+            this.objectCol = Math.floor(Math.random() * gridSize);
+
+            if(this.objectRow !== playerRow && this.objectCol !== playerCol){ 
+                validPosition = true;
+            }
+            for (let i=0; i <gameObjects.length; i++){
+                if(gameObjects[i].objectRow !== this.objectRow && gameObjects[i].objectCol !== this.objectCol){
+                    validPosition = true;
+                }
+            }
+        } this.createGameObject();
+    }
+```
+<br>
+Next, let's create the `createGameObject` function to append the objects into the `gameObjects` array during a duration of time.
+<br>
+First, we will need to create a div in the html to store the game object.  We'll add a class `game-object` to this div so that we can modify all objects the same way later on. 
+<br>
+Then, we'll need to relocate (transform) the object to a random position that is incide the grid cell. Once we've defined this position, we'll aphend the object inside the document's grid.
+<br>
+Lastly, create a `setTimeout` to make sure the object only stays for a while, and the maximum time is a property that is dependent on the level of the game. Make sure the `gameObjects` array only contain the remaining game objects. 
+
+```javascript
+createGameObject(){
+    this.element = document.createElement("div");
+    this.element.classList.add("game-object", this.type);
+
+    const cellSize = getCellSize();
+    this.element.style.transform = `translate(${this.objectCol*cellSize}px, ${this.objectRow*cellSize}px)`;
+
+    document.getElementById("gridOverlay").appendChild(this.element);
+
+    setTimeout(() => {
+        this.element.remove();
+        gameObjects = gameObjects.filter(obj => obj !== this); 
+    }, maxTime)
 }
 ```
 
-### Creating an event listener to switch screen
+Next, create a function to generate the game object at random interval. Inside this function, initialise the Game Object class using a random type of object, and add it into the gameObjects array.
 ```javascript
-buttons.nextLevel.addEventListener("click", () =>{
-    switchScreen(screens.gameEnd, screens.gameChallenge, "flex");
-    currentLevel++;
-    loadLevel(currentLevel);
-}) 
+function generateGameObjects(){    
+    if (gameObjects.length <= maxObjects){
+        let type = objectTypes[Math.floor(Math.random() * objectTypes.length)];
+        let newObject = new GameObject(type);
+        gameObjects.push(newObject);
+    }
+}
 ```
+<br>
+Additionally, below is the function to make sure that the grid fit the div. The `gridSize` is a constant that is the number of cell of the chessboard in which the niffler and the game objects are located.
 
-
+```javascript
+function getCellSize(){
+    return grid.clientWidth/ gridSize;
+}
+```
 
 ## States y States Transitions
 - **Start Screen**: contains the game's name, the main logo, and the next button

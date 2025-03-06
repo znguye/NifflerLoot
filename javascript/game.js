@@ -26,7 +26,10 @@ let playerCol;
 
 // CHANGING SCREENS
 buttons.howToLoot.addEventListener("click", () => switchScreen(screens.gameIntro, screens.gameInstruction, "flex"));
-buttons.startLooting.addEventListener("click", () => switchScreen(screens.gameInstruction, screens.gameChallenge, "flex"));
+buttons.startLooting.addEventListener("click", () => {
+    switchScreen(screens.gameInstruction, screens.gameChallenge, "flex");
+    loadLevel(currentLevel);
+});
 
 buttons.play.addEventListener("click", () => {
     // console.log("play button clicked");
